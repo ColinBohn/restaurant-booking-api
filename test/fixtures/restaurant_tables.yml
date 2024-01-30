@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+mcd_2:
+  capacity: 2
+  restaurant: mcd
+
+mcd_4:
+  capacity: 4
+  restaurant: mcd
+
+bk_2:
+  capacity: 2
+  restaurant: bk

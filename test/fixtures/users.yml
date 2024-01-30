@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+colin:
+  name: 'Colin'
+
+harold:
+  name: 'Harold'
+
+yasmine:
+  name: 'Yasmine'
+  dietary_preferences: gluten_free
+
+bryson:
+  name: 'Bryson'
+  dietary_preferences: vegan

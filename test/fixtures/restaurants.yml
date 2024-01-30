@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+mcd:
+  name: 'McDonalds'
+  dietary_preferences: [gluten_free]
+
+bk:
+  name: 'Burger King'
+  dietary_preferences: [vegan]

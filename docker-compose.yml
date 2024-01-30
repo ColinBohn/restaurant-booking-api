@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  api:
+   build: .
+   volumes:
+    - type: bind
+      source: ./
+      target: /rails
