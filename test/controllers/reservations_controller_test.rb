@@ -29,11 +29,15 @@ class ReservationsControllerTest < ActionDispatch::IntegrationTest
     # One 2-person table, one 4-person table
     get check_reservations_url, params: { time: '2024-01-01T12:00:00Z', users: %w[Colin Harold Yasmine] }
     assert_equal 1, @response.parsed_body.length
+    get check_reservations_url, params: { time: '2024-01-01T12:00:00Z', users: %w[Colin Harold] }
+    assert_equal 2, @response.parsed_body.length
 
     restaurant_tables(:mcd_4).destroy
 
     get check_reservations_url, params: { time: '2024-01-01T12:00:00Z', users: %w[Colin Harold Yasmine] }
     assert_equal 0, @response.parsed_body.length
+    get check_reservations_url, params: { time: '2024-01-01T12:00:00Z', users: %w[Colin Harold] }
+    assert_equal 2, @response.parsed_body.length
   end
 
   test 'check should filter by table availability' do

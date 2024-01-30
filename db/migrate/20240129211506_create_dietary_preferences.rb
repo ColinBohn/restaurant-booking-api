@@ -4,7 +4,7 @@
 class CreateDietaryPreferences < ActiveRecord::Migration[7.1]
   def change # rubocop:disable Metrics/MethodLength
     create_table :dietary_preferences, id: :uuid,
-                                       comment: 'Types of different dietary choices and food restrictions' do |t|
+                                       comment: 'Types of diet restrictions and choices' do |t|
       t.string :name
       t.timestamps
     end

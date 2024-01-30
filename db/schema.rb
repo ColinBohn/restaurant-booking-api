@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_29_211506) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "dietary_preferences", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Types of different dietary choices and food restrictions", force: :cascade do |t|
+  create_table "dietary_preferences", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Types of diet restrictions and choices", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_29_211506) do
     t.index ["user_id"], name: "index_dietary_preferences_users_on_user_id"
   end
 
-  create_table "reservations", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Bookings for groups a restaurant table at a time", force: :cascade do |t|
+  create_table "reservations", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Bookings for groups of users at a restaurant table", force: :cascade do |t|
     t.uuid "restaurant_table_id"
     t.datetime "time", precision: nil
     t.datetime "created_at", null: false
@@ -46,7 +46,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_29_211506) do
     t.index ["restaurant_table_id"], name: "index_reservations_on_restaurant_table_id"
   end
 
-  create_table "reservations_users", id: false, comment: "People attending a specific reservation", force: :cascade do |t|
+  create_table "reservations_users", id: false, comment: "Users attending a reservation", force: :cascade do |t|
     t.uuid "reservation_id"
     t.uuid "user_id"
     t.datetime "created_at", null: false
@@ -63,13 +63,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_29_211506) do
     t.index ["restaurant_id"], name: "index_restaurant_tables_on_restaurant_id"
   end
 
-  create_table "restaurants", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Locations with reservable tables", force: :cascade do |t|
+  create_table "restaurants", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Businesses with reservable tables", force: :cascade do |t|
     t.text "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "Persons who reserve tables at restaurants", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, comment: "People who dine at restaurants", force: :cascade do |t|
     t.text "name"
     t.float "home_lat"
     t.float "home_lng"
